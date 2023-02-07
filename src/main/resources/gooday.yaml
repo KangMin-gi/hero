@@ -1,0 +1,6 @@
+spring:
+  config:
+    activate:
+      on-profile: gooday
+goodday:
+  hi: hello

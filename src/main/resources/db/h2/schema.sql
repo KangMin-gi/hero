@@ -1,0 +1,9 @@
+DROP TABLE Users if exists ;
+
+CREATE TABLE Users (
+  id         INTEGER AUTO_INCREMENT PRIMARY KEY,
+  userName   VARCHAR(30) NOT NULL,
+  createDate DATE NOT NULL DEFAULT NOW()
+);
+
+

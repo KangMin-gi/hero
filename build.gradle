@@ -1,0 +1,61 @@
+plugins {
+    id 'java' apply true
+    id 'org.springframework.boot' version '3.0.2' apply true
+    id 'io.spring.dependency-management' version '1.1.0' apply true
+    id 'org.graalvm.buildtools.native' version '0.9.18' apply true
+}
+
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+// This Project Dependencies
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    runtimeOnly 'com.h2database:h2'
+}
+
+// All Project Dependencies include This Project(Root)
+allprojects {
+
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.graalvm.buildtools.native'
+
+    group = 'com.flowerbun'
+    version = '0.0.1'
+    sourceCompatibility = '17'
+
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testCompileOnly 'org.projectlombok:lombok'
+        testAnnotationProcessor 'org.projectlombok:lombok'
+
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+
+}
+
+project(':dddemo') {
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+    }
+}

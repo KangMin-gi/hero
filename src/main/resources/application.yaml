@@ -1,0 +1,48 @@
+spring:
+  config:
+    location: classpath:db/h2/h2.yaml
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    open-in-view: false
+    properties:
+      hibernate:
+        show_sql: true
+  profiles:
+    group:
+      local:
+        - h2
+        - local
+      doc:
+        - h2
+        - doc
+    include:
+      - goodday
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:db/h2/schema.sql
+      data-locations: classpath:db/h2/data.sql
+      # classpath*: 과 classpath: 의 차이
+      # classpath: -> 현재 classLoader 해당하는 경로의 리소스만, 현재 프로젝트의 리소스
+      # classpath*: -> 현재 + 상위? 의 클래스 로더모두 검색해서 해당 리소스 참조
+
+profile:
+  env: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: doc
+
+profile:
+  env: doc
