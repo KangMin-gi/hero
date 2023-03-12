@@ -20,10 +20,9 @@
  
  ### Todo :
   - launch h2 via docker when start project
-  - Multi module set via gradle
   - service listing  
   - some integration 
 
- ### Todo2 : 
-  - Sleep
-  - Exercise
+ ### Todo2 (하려 했지만, 다른 프로젝트로 대체) :
+  - Multi module set via gradle
+---

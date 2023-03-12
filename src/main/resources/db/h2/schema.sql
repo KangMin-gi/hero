@@ -1,9 +1,19 @@
-DROP TABLE Users if exists ;
+DROP TABLE if exists Orders;
+
+CREATE TABLE Orders (
+    id      INTEGER AUTO_INCREMENT PRIMARY KEY
+);
+
+DROP TABLE if exists ObD;
+
+CREATE TABLE ObD (
+    id      INTEGER AUTO_INCREMENT PRIMARY KEY
+);
+
+DROP TABLE If exists Users;
 
 CREATE TABLE Users (
   id         INTEGER AUTO_INCREMENT PRIMARY KEY,
   userName   VARCHAR(30) NOT NULL,
   createDate DATE NOT NULL DEFAULT NOW()
 );
-
-
